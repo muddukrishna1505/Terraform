@@ -5,6 +5,11 @@ variable "ami_id" {
 
 }
 
+variable "project" {
+  default = "roboshop"
+  type = string
+}
+
 variable "environment" {
     type = string
     default = "dev"
@@ -26,7 +31,7 @@ variable "instance_type" {
 }
 
 variable "sg_name" {
-  default = "allow_ssh"
+  default = "allow_terraform_vars"
 }
 
 variable "port_ingress" {
@@ -52,13 +57,8 @@ variable "cidr" {
   default = ["0.0.0.0/0"]
 }
 
-variable "ec2_tags" {
-  type = map(any)
-  default = {
-    Name         = "Instance-2"
-    Project_Name = "Roboshop"
-    Environment  = "Dev"
-  }
 
-
+variable "instances" {
+  type  = list(string)
+  default = ["mongodb", "redis", "mysql", "rabbitmq"]
 }
