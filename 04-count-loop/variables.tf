@@ -60,5 +60,14 @@ variable "cidr" {
 
 variable "instances" {
   type  = list(string)
-  default = ["mongodb", "redis", "mysql", "rabbitmq"]
+  default = ["mongodb", "redis", "mysql", "rabbitmq", "catalogue", "user", "cart", "shipping", "payment", "frontend"]
+}
+
+variable "zone_id" {
+  
+  default = "Z00981222UH92I1EWAVNF"
+} 
+
+variable "domain_name" {
+  default = "bmkrishtech.online"
 }

@@ -43,6 +43,10 @@ resource "aws_security_group" "roboshop" {
   tags = {
     name = "${var.project}-${var.environment}-${var.instances[count.index]}" # interpolation
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_security_group" "common" {
@@ -59,6 +63,10 @@ resource "aws_security_group" "common" {
 
   tags = {
     name = "${var.project}-${var.environment}-common"
+  }
+
+  lifecycle {
+    create_before_destroy = true
   }
   
 }
