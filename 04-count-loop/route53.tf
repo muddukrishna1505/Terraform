@@ -10,7 +10,7 @@ resource "aws_route53_record" "roboshop" {
 resource "aws_route53_record" "frontend" {
     count = contains(var.instances, "frontend") ? 1 : 0
   zone_id = var.zone_id
-  name    = "${var.environment}-${var.environment}.${var.domain_name}" #roboshop-dev.bmkrishtech.online
+  name    = "${var.project}-${var.environment}.${var.domain_name}" #roboshop-dev.bmkrishtech.online
   type    = "A"
   ttl     = 1
   records = [aws_instance.roboshop[index(var.instances, "frontend")].public_ip]
